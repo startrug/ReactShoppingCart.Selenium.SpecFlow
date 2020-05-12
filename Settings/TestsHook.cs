@@ -1,6 +1,7 @@
 ﻿using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using ReactShoppingCart.Selenium.SpecFlow.Pages;
 using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Settings
@@ -16,8 +17,16 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
         [BeforeScenario]
         public void InitializeWebDriver()
         {
-            driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
+            driver = new ChromeDriver(options);
             objectContainer.RegisterInstanceAs(driver);
+        }
+
+        public void OpenHomePage()
+        {
+            homePage = new HomePage(driver);
+            objectContainer.RegisterInstanceAs(homePage);
         }
 
         [AfterScenario]
@@ -29,6 +38,8 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
         }
 
         private IWebDriver driver;
+
+        private HomePage homePage;
 
         private readonly IObjectContainer objectContainer;
     }

@@ -130,10 +130,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Settings\TestsHook.cs" />
+    <Compile Include="Steps\AddProductsToCartSteps.cs" />
     <Compile Include="Steps\OpenHomePageSteps.cs" />
+    <Compile Include="Steps\Product.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Feature\AddProductsToCart.feature" />
     <None Include="Feature\OpenHomePage.feature" />
     <None Include="packages.config" />
   </ItemGroup>
