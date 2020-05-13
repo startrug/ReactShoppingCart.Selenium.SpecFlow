@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace ReactShoppingCart.Selenium.SpecFlow.Pages
+namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
     public class HomePage
     {

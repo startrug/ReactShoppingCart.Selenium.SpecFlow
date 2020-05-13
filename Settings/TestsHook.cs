@@ -1,7 +1,7 @@
 ﻿using BoDi;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using ReactShoppingCart.Selenium.SpecFlow.Pages;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Settings
@@ -29,6 +29,12 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
             objectContainer.RegisterInstanceAs(homePage);
         }
 
+        public void InitializeNewOrder()
+        {
+            order = new Order();
+            objectContainer.RegisterInstanceAs(order);
+        }
+
         [AfterScenario]
         public void AfterScenario()
         {
@@ -40,7 +46,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
         private IWebDriver driver;
 
         private HomePage homePage;
-
+        private Order order;
         private readonly IObjectContainer objectContainer;
     }
 }

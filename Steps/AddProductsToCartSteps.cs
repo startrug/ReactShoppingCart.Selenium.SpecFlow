@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BoDi;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
+using ReactShoppingCart.Selenium.SpecFlow.Settings;
 using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
@@ -14,11 +17,13 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 
         private IWebDriver Driver => container.Resolve<IWebDriver>();
 
+        private Order NewOrder => container.Resolve<Order>();
+
         public string Id { get; set; }
 
         private Product randomProduct;
 
-        private List<Product> randomProducts = new List<Product>();
+        private readonly List<Product> randomProducts = new List<Product>();
 
         public AddProductsToCartSteps(IObjectContainer objectContainer)
         {
@@ -29,19 +34,25 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         public void WhenIClickOnRandomProduct()
         {
             randomProduct = SelectRandomProduct();
-            randomProduct
-                .Photo
-                .Click();
+            randomProduct.ClickOnPhoto();
+
+            AddAmount(randomProduct.Price);
         }
 
-        [When(@"I click on ""(.*)"" random products")]
+        [When(@"I click on (.*) random products")]
         public void WhenIClickOnRandomProducts(int number)
         {
             for (int i = 0; i < number; i++)
             {
                 randomProducts.Add(SelectRandomProduct());
-                randomProducts.ForEach(p => p.Photo.Click());
+                AddAmount(randomProducts.ElementAt(i).Price);
+                randomProducts.ElementAt(i).Photo.Click();
             }
+        }
+
+        private void AddAmount(string price)
+        {
+            NewOrder.TotalAmount += Double.Parse(price.Remove(0, 1));
         }
 
         private Product SelectRandomProduct()
@@ -64,13 +75,17 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Then(@"Selected product is present in cart")]
         public void ThenSelectedProductIsPresentInCart()
         {
-            Assert.AreEqual(randomProduct.Name, Driver.FindElement(By.CssSelector(".float-cart .shelf-item .title ")).Text);
+            var productsInCart = Driver.FindElements(By.CssSelector(".float-cart .shelf-item .title"));
+            foreach (var product in randomProducts)
+            {
+                Assert.That(Driver.FindElements(By.CssSelector(".float-cart .shelf-item .title")).Select(e => e.Text).Contains(product.Name), Is.True);
+            }
         }
 
         [Then(@"Correct total amount is displayed")]
         public void ThenCorrectTotalAmountIsDisplayed()
         {
-            Assert.AreEqual(randomProduct.Price, Driver.FindElement(By.CssSelector(".float-cart .sub-price p")).Text.Replace(" ", ""));
+            Assert.AreEqual(NewOrder.TotalAmount.ToString("F"), Driver.FindElement(By.CssSelector(".float-cart .sub-price p")).Text.Replace(" ", "").Remove(0, 1));
         }
 
     }

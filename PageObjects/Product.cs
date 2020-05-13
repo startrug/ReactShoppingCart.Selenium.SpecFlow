@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace ReactShoppingCart.Selenium.SpecFlow.Steps
+namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
     internal class Product
     {
@@ -32,5 +32,12 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         public string GetPrice(string id) => Driver.FindElement(By.CssSelector($"[data-sku='{id}'] .val")).Text;
 
         public IWebElement GetPhoto(string id) => Driver.FindElement(By.CssSelector($"[data-sku='{id}'] img"));
+
+        internal Cart ClickOnPhoto()
+        {
+            Photo.Click();
+
+            return new Cart(Driver);
+        }
     }
 }

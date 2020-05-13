@@ -3,7 +3,7 @@ using BoDi;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using ReactShoppingCart.Selenium.SpecFlow.Pages;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using TechTalk.SpecFlow;
 using EC = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
