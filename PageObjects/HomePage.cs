@@ -2,18 +2,13 @@
 
 namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
-    public class HomePage
+    public class HomePage : PageObjectsBase
     {
-        private readonly IWebDriver webDriver;
-
-        public HomePage(IWebDriver driver)
-        {
-            webDriver = driver;
-        }
+        public HomePage(IWebDriver driver) : base(driver) { }
 
         public void GoTo()
         {
-            webDriver.Navigate().GoToUrl("https://react-shopping-cart-67954.firebaseapp.com/");
+            Driver.Navigate().GoToUrl("https://react-shopping-cart-67954.firebaseapp.com/");
         }
     }
 }

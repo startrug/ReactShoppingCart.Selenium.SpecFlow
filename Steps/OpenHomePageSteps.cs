@@ -42,7 +42,5 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         {
             Assert.That(title == Driver.Title);
         }
-
-
     }
 }

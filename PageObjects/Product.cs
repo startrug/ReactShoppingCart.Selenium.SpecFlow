@@ -2,42 +2,31 @@
 
 namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
-    internal class Product
+    internal class Product : PageObjectsBase
     {
-        private readonly IWebDriver Driver;
-        private readonly string Id;
-
-        public Product(IWebDriver driver, string id)
+        public Product(IWebDriver driver, string id) : base(driver)
         {
-            Driver = driver;
             Id = id;
         }
 
-        public string Name
+        public string Name => GetElement(By.CssSelector($"[data-sku='{Id}'] p")).Text;
+
+        private IWebElement GetElement(By locator)
         {
-            get => GetName(Id);
-        }
-        public string Price
-        {
-            get => GetPrice(Id);
+            return Driver.FindElement(locator);
         }
 
-        public IWebElement Photo
-        {
-            get => GetPhoto(Id);
-        }
+        public string Price => Driver.FindElement(By.CssSelector($"[data-sku='{Id}'] .val")).Text;
 
-        public string GetName(string id) => Driver.FindElement(By.CssSelector($"[data-sku='{id}'] p")).Text;
+        public IWebElement Photo => Driver.FindElement(By.CssSelector($"[data-sku='{Id}'] img"));
 
-        public string GetPrice(string id) => Driver.FindElement(By.CssSelector($"[data-sku='{id}'] .val")).Text;
-
-        public IWebElement GetPhoto(string id) => Driver.FindElement(By.CssSelector($"[data-sku='{id}'] img"));
-
-        internal Cart ClickOnPhoto()
+        public Cart ClickOnPhoto()
         {
             Photo.Click();
 
             return new Cart(Driver);
         }
+
+        private readonly string Id;
     }
 }

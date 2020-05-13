@@ -2,13 +2,8 @@
 
 namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
-    internal class Cart
+    public class Cart : PageObjectsBase
     {
-        private IWebDriver Driver;
-
-        public Cart(IWebDriver driver)
-        {
-            Driver = driver;
-        }
+        public Cart(IWebDriver driver) : base(driver) { }
     }
 }
