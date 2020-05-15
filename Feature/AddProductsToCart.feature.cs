@@ -20,23 +20,24 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("OpenHomePage")]
-    public partial class OpenHomePageFeature
+    [NUnit.Framework.DescriptionAttribute("AddProductsToCart")]
+    public partial class AddProductsToCartFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "OpenHomePage.feature"
+#line 1 "AddProductsToCart.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "OpenHomePage", "\tAs user of online shop\r\n\tI want to enter home page of ReactShoppingCart and see " +
-                    "correct page title", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddProductsToCart", "\tAs user of online shop\r\n\tI want to be able to add products to cart\r\n\tI want to s" +
+                    "ee added products in cart\r\n\tI want to see total amount of products added to cart" +
+                    "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,15 +76,23 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("As user I enter to home page and I see correct page title")]
-        [NUnit.Framework.CategoryAttribute("openpage")]
-        public virtual void AsUserIEnterToHomePageAndISeeCorrectPageTitle()
+        [NUnit.Framework.DescriptionAttribute("As user I\'m able to add any number of products to cart")]
+        [NUnit.Framework.CategoryAttribute("addtocart")]
+        [NUnit.Framework.TestCaseAttribute("1", null)]
+        [NUnit.Framework.TestCaseAttribute("2", null)]
+        [NUnit.Framework.TestCaseAttribute("3", null)]
+        [NUnit.Framework.TestCaseAttribute("4", null)]
+        public virtual void AsUserImAbleToAddAnyNumberOfProductsToCart(string number, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "openpage"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I enter to home page and I see correct page title", null, new string[] {
-                        "openpage"});
-#line 6
+            string[] @__tags = new string[] {
+                    "addtocart"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to add any number of products to cart", null, @__tags);
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -103,14 +112,23 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 9
  testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 10
  testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 9
- testRunner.Then("Home page title \"React Shopping Cart\" is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 11
+  testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 12
+ testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 13
+  testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 14
+  testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

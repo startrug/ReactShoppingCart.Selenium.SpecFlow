@@ -1,39 +1,21 @@
-﻿using System;
-using BoDi;
+﻿using BoDi;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using TechTalk.SpecFlow;
 using EC = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
     [Binding]
-    public class OpenHomePageSteps
+    class OpenHomePageSteps : StepsBase
     {
-        private readonly WebDriverWait wait;
-        private readonly IObjectContainer container;
+        public OpenHomePageSteps(IObjectContainer objectContainer) : base(objectContainer) { }
 
-        private IWebDriver Driver => container.Resolve<IWebDriver>();
-
-        public OpenHomePageSteps(IObjectContainer objectContainer)
+        [Given(@"I enter to home page")]
+        public void GivenIEnterToHomePage()
         {
-            container = objectContainer;
-            wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-        }
-
-
-        [Given(@"I enter to ""(.*)"" page")]
-        public void GivenIEnterToPage(string pageName)
-        {
-            var url = string.Empty;
-
-            if (pageName == "home")
-            {
-                url = "https://react-shopping-cart-67954.firebaseapp.com/";
-            }
-
-            Driver.Navigate().GoToUrl(url);
+            HomePage.GoTo();
         }
 
         [When(@"Home page is loaded")]
@@ -45,9 +27,9 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Then(@"Home page title ""(.*)"" is correct")]
         public void ThenHomePageIsCorrect(string title)
         {
-            Assert.That(title == this.Driver.Title);
+            Assert.That(title == Driver.Title);
         }
 
-
+        private HomePage HomePage => container.Resolve<HomePage>();
     }
 }
