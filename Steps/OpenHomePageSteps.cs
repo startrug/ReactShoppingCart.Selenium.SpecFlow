@@ -21,7 +21,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         public OpenHomePageSteps(IObjectContainer objectContainer)
         {
             container = objectContainer;
-            wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
+            wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
         }
 
 

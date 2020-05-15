@@ -8,10 +8,10 @@
 Scenario Outline: As user I'm able to add any number of products to cart
 	Given I enter to home page
 	When Home page is loaded
-	And I click on <number> random products
+		And I click on <number> random products
 	Then Cart is opened
-	And Selected product is present in cart
-	And Correct total amount is displayed
+		And Selected product is present in cart
+		And Correct total amount is displayed
 
 	Examples:
 	| number |
