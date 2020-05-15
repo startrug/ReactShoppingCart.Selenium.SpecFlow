@@ -19,3 +19,12 @@ Scenario Outline: As user I'm able to add any number of products to cart
 	| 2      |
 	| 3      |
 	| 4      |
+
+Scenario: As user I'm able to add product to cart and increase their quantity
+Given I enter to home page
+	When Home page is loaded
+		And I click on "1" random products
+	Then Cart is opened
+		And Selected product is present in cart
+		And I increase aquantity of product
+		And Correct total amount is displayed
