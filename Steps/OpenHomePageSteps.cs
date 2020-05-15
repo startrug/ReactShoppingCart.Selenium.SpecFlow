@@ -1,8 +1,6 @@
-﻿using System;
-using BoDi;
+﻿using BoDi;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using TechTalk.SpecFlow;
 using EC = SeleniumExtras.WaitHelpers.ExpectedConditions;
@@ -10,20 +8,9 @@ using EC = SeleniumExtras.WaitHelpers.ExpectedConditions;
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
     [Binding]
-    public class OpenHomePageSteps
+    class OpenHomePageSteps : StepsBase
     {
-        private readonly WebDriverWait wait;
-        private readonly IObjectContainer container;
-
-        private IWebDriver Driver => container.Resolve<IWebDriver>();
-        private HomePage HomePage => container.Resolve<HomePage>();
-
-        public OpenHomePageSteps(IObjectContainer objectContainer)
-        {
-            container = objectContainer;
-            wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
-        }
-
+        public OpenHomePageSteps(IObjectContainer objectContainer) : base(objectContainer) { }
 
         [Given(@"I enter to home page")]
         public void GivenIEnterToHomePage()
@@ -42,5 +29,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         {
             Assert.That(title == Driver.Title);
         }
+
+        private HomePage HomePage => container.Resolve<HomePage>();
     }
 }

@@ -11,33 +11,11 @@ using TechTalk.SpecFlow;
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
     [Binding]
-    class AddProductsToCartSteps
+    class AddProductsToCartSteps : StepsBase
     {
-        private readonly IObjectContainer container;
-
-        private IWebDriver Driver => container.Resolve<IWebDriver>();
-
-        private Order NewOrder => container.Resolve<Order>();
-
         public string Id { get; set; }
 
-        private Product randomProduct;
-
-        private readonly List<Product> randomProducts = new List<Product>();
-
-        public AddProductsToCartSteps(IObjectContainer objectContainer)
-        {
-            container = objectContainer;
-        }
-
-        [When(@"I click on random product")]
-        public void WhenIClickOnRandomProduct()
-        {
-            randomProduct = SelectRandomProduct();
-            randomProduct.ClickOnPhoto();
-
-            AddAmount(randomProduct.Price);
-        }
+        public AddProductsToCartSteps(IObjectContainer objectContainer) : base(objectContainer) { }
 
         [When(@"I click on (.*) random products")]
         public void WhenIClickOnRandomProducts(int number)
@@ -46,7 +24,8 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             {
                 randomProducts.Add(SelectRandomProduct());
                 AddAmount(randomProducts.ElementAt(i).Price);
-                randomProducts.ElementAt(i).Photo.Click();
+
+                cart = randomProducts.ElementAt(i).ClickOnPhoto();
             }
         }
 
@@ -57,11 +36,10 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 
         private Product SelectRandomProduct()
         {
-            Random random = new Random();
+            var random = new Random();
+            var products = Driver.FindElements(By.CssSelector(".shelf-container .shelf-item"));
 
-            var allProducts = Driver.FindElements(By.CssSelector(".shelf-container .shelf-item"));
-
-            Id = allProducts[random.Next(allProducts.Count)].GetAttribute("data-sku");
+            Id = products[random.Next(products.Count)].GetAttribute("data-sku");
 
             return new Product(Driver, Id);
         }
@@ -69,24 +47,27 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Then(@"Cart is opened")]
         public void ThenCartIsOpened()
         {
-            Assert.That(Driver.FindElement(By.CssSelector(".float-cart--open")).Displayed, Is.True);
+            Assert.IsTrue(cart.IsOpened());
         }
 
         [Then(@"Selected product is present in cart")]
         public void ThenSelectedProductIsPresentInCart()
         {
-            var productsInCart = Driver.FindElements(By.CssSelector(".float-cart .shelf-item .title"));
             foreach (var product in randomProducts)
             {
-                Assert.That(Driver.FindElements(By.CssSelector(".float-cart .shelf-item .title")).Select(e => e.Text).Contains(product.Name), Is.True);
+                Assert.That(cart.GetProductNames().Select(e => e.Text).Contains(product.Name), Is.True);
             }
         }
 
         [Then(@"Correct total amount is displayed")]
         public void ThenCorrectTotalAmountIsDisplayed()
         {
-            Assert.AreEqual(NewOrder.TotalAmount.ToString("F"), Driver.FindElement(By.CssSelector(".float-cart .sub-price p")).Text.Replace(" ", "").Remove(0, 1));
+            Assert.AreEqual(NewOrder.TotalAmount.ToString("F"), cart.GetSubtotal());
         }
 
+        private Order NewOrder => container.Resolve<Order>();
+
+        private Cart cart;
+        private readonly List<Product> randomProducts = new List<Product>();
     }
 }
