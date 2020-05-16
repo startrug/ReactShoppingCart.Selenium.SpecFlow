@@ -65,9 +65,29 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             Assert.AreEqual(NewOrder.TotalAmount.ToString("F"), cart.GetSubtotal());
         }
 
+        [Then(@"I increase quantity of products to (.*)")]
+        public void ThenIIncreaseAquantityOfProductTo(int newQuantity)
+        {
+            quantity = newQuantity;
+            for (int i = 1; i < quantity; i++)
+            {
+                cart.IncreaseQuantity(randomProducts.First().Name);
+                NewOrder.TotalAmount = Double.Parse(randomProducts.First().Price.Remove(0, 1)) * quantity;
+            }
+            cart.WaitForUpdate();
+        }
+
+        [Then(@"Correct quantity of products is displayed")]
+        public void ThenCorrectQuantityOfProductsIsDisplayed()
+        {
+            Assert.AreEqual(quantity, cart.GetDescription(randomProducts.First().Name).Quantity);
+        }
+
+
         private Order NewOrder => container.Resolve<Order>();
 
         private Cart cart;
         private readonly List<Product> randomProducts = new List<Product>();
+        private int quantity;
     }
 }

@@ -1,9 +1,7 @@
 ﻿using BoDi;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using TechTalk.SpecFlow;
-using EC = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
@@ -21,7 +19,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [When(@"Home page is loaded")]
         public void WhenHomePageIsLoaded()
         {
-            wait.Until(EC.VisibilityOfAllElementsLocatedBy(By.TagName("img")));
+            HomePage.WaitForImages();
         }
 
         [Then(@"Home page title ""(.*)"" is correct")]
