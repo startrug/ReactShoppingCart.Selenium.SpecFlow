@@ -13,6 +13,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
         }
 
         protected IWebDriver Driver;
+
         protected readonly WebDriverWait wait;
     }
 }

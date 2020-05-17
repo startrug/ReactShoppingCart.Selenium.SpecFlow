@@ -24,12 +24,6 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
                 .Click();
         }
 
-        private By AddButton(string productName) => By.XPath($"{openedCartXpath}//p[text()='{productName}']/parent::div/following::div/button[text()='+']");
-
-        private By Description(string productName) => By.XPath($"{openedCartXpath}//p[text()='{productName}']/following::p[@class='desc']");
-
-        private readonly string openedCartXpath = "//div[contains(@class, 'cart--open')]";
-
         internal Description GetDescription(string productName)
         {
             var text = wait.Until(EC.ElementIsVisible(Description(productName))).Text;
@@ -41,6 +35,12 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
         {
             Thread.Sleep(1500);
         }
+
+        private By AddButton(string productName) => By.XPath($"{openedCartXpath}//p[text()='{productName}']/parent::div/following::div/button[text()='+']");
+
+        private By Description(string productName) => By.XPath($"{openedCartXpath}//p[text()='{productName}']/following::p[@class='desc']");
+
+        private readonly string openedCartXpath = "//div[contains(@class, 'cart--open')]";
     }
 
     internal class Description

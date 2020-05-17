@@ -1,5 +1,6 @@
 ﻿using BoDi;
 using OpenQA.Selenium;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
@@ -11,6 +12,8 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         }
 
         protected IWebDriver Driver => container.Resolve<IWebDriver>();
+
+        protected HomePage HomePage => container.Resolve<HomePage>();
 
         protected readonly IObjectContainer container;
     }
