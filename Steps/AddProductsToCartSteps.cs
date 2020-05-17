@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BoDi;
 using NUnit.Framework;
-using OpenQA.Selenium;
 using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using ReactShoppingCart.Selenium.SpecFlow.Settings;
 using TechTalk.SpecFlow;
@@ -13,8 +11,6 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
     [Binding]
     class AddProductsToCartSteps : StepsBase
     {
-        public string Id { get; set; }
-
         public AddProductsToCartSteps(IObjectContainer objectContainer) : base(objectContainer) { }
 
         [When(@"I click on (.*) random products")]
@@ -22,26 +18,11 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         {
             for (int i = 0; i < number; i++)
             {
-                randomProducts.Add(SelectRandomProduct());
-                AddAmount(randomProducts.ElementAt(i).Price);
+                randomProducts.Add(HomePage.SelectRandomProduct());
+                NewOrder.AddAmount(randomProducts.ElementAt(i).Price);
 
                 cart = randomProducts.ElementAt(i).ClickOnPhoto();
             }
-        }
-
-        private void AddAmount(string price)
-        {
-            NewOrder.TotalAmount += Double.Parse(price.Remove(0, 1));
-        }
-
-        private Product SelectRandomProduct()
-        {
-            var random = new Random();
-            var products = Driver.FindElements(By.CssSelector(".shelf-container .shelf-item"));
-
-            Id = products[random.Next(products.Count)].GetAttribute("data-sku");
-
-            return new Product(Driver, Id);
         }
 
         [Then(@"Cart is opened")]
@@ -65,9 +46,31 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             Assert.AreEqual(NewOrder.TotalAmount.ToString("F"), cart.GetSubtotal());
         }
 
+        [Then(@"I increase quantity of products to (.*)")]
+        public void ThenIIncreaseAquantityOfProductTo(int newQuantity)
+        {
+            quantity = newQuantity;
+            var product = randomProducts.First();
+
+            for (int i = 1; i < quantity; i++)
+            {
+                cart.IncreaseQuantity(product.Name);
+                NewOrder.SetAmountUsingQuantity(product.Price, quantity);
+            }
+            cart.WaitForUpdate();
+        }
+
+        [Then(@"Correct quantity of products is displayed")]
+        public void ThenCorrectQuantityOfProductsIsDisplayed()
+        {
+            Assert.AreEqual(quantity, cart.GetDescription(randomProducts.First().Name).Quantity);
+        }
+
+
         private Order NewOrder => container.Resolve<Order>();
 
         private Cart cart;
         private readonly List<Product> randomProducts = new List<Product>();
+        private int quantity;
     }
 }
