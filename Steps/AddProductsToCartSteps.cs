@@ -66,6 +66,19 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             Assert.AreEqual(quantity, cart.GetDescription(randomProducts.First().Name).Quantity);
         }
 
+        [Then(@"I decrease quantity of products to (.*)")]
+        public void ThenIDecreaseQuantityOfProductsTo(int p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"If quantity equals ""(.*)"" minus button is disabled")]
+        public void ThenIfQuantityEqualsMinusButtonIsDisabled(int p0)
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+
 
         private Order NewOrder => container.Resolve<Order>();
 
