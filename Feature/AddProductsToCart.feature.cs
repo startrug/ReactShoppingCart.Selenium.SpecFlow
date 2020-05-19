@@ -20,8 +20,8 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("AddProductsToCart")]
-    public partial class AddProductsToCartFeature
+    [NUnit.Framework.DescriptionAttribute("Adding products to cart")]
+    public partial class AddingProductsToCartFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddProductsToCart", "\tAs user of online shop\r\n\tI want to be able to add products to cart\r\n\tI want to s" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Adding products to cart", "\tAs user of online shop\r\n\tI want to be able to add products to cart\r\n\tI want to s" +
                     "ee added products in cart\r\n\tI want to see total amount of products added to cart" +
                     "\r\n\tI want to be able to increase and decrease quantity of products in cart", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
@@ -93,7 +93,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to add any number of products to cart", null, @__tags);
 #line 9
-this.ScenarioInitialize(scenarioInfo);
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -113,22 +113,22 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 10
- testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
- testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
-  testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
- testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 14
-  testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
-  testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -152,7 +152,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to add product to cart and increase their quantity", null, @__tags);
 #line 25
-this.ScenarioInitialize(scenarioInfo);
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -172,28 +172,28 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 26
- testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 27
- testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 28
-  testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
- testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 30
-  testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 31
-  testRunner.And(string.Format("I increase quantity of products to {0}", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I increase quantity of products to {0}", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 32
-  testRunner.And(string.Format("Correct quantity of products {0} is displayed", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("Correct quantity of products {0} is displayed", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 33
-  testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -216,7 +216,7 @@ this.ScenarioInitialize(scenarioInfo);
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to add product to cart and decrease their quantity", null, @__tags);
 #line 43
-this.ScenarioInitialize(scenarioInfo);
+ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
             bool isFeatureIgnored = default(bool);
@@ -236,34 +236,34 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 44
- testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I enter to home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 45
- testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+  testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 46
-  testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
- testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+  testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 48
-  testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 49
-  testRunner.And(string.Format("I increase quantity of products to {0}", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I increase quantity of products to {0}", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 50
-  testRunner.And(string.Format("Correct quantity of products {0} is displayed", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("Correct quantity of products {0} is displayed", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 51
-  testRunner.And(string.Format("I decrease quantity of products to {0}", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I decrease quantity of products to {0}", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 52
-  testRunner.And(string.Format("Correct quantity of products {0} is displayed", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("Correct quantity of products {0} is displayed", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 53
-  testRunner.And("If quantity equals \"1\" minus button is disabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("If quantity equals \"1\" minus button is disabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -1,6 +1,7 @@
-﻿Feature: OpenHomePage
+﻿Feature: Opening home page
 	As user of online shop
-	I want to enter home page of ReactShoppingCart and see correct page title
+	I want to enter home page of ReactShoppingCart and see product photos
+	I want to see correct page title
 
 @openpage
 Scenario: As user I enter to home page and I see correct page title
