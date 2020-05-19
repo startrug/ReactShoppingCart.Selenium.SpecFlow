@@ -156,6 +156,8 @@
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="Settings\TestsHook.cs" />
     <Compile Include="Steps\StepsBase.cs" />
+    <Compile Include="Values\ChangeType.cs" />
+    <Compile Include="Values\Description.cs" />
     <Compile Include="Values\Order.cs" />
     <Compile Include="Steps\AddProductsToCartSteps.cs" />
     <Compile Include="PageObjects\Cart.cs" />

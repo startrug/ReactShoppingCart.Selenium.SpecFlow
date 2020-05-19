@@ -29,7 +29,7 @@ Scenario Outline: As user I'm able to add product to cart and increase their qua
 	Then Cart is opened
 		And Selected product is present in cart
 		And I increase quantity of products to <quantity>
-		And Correct quantity of products is displayed
+		And Correct quantity of products <quantity> is displayed
 		And Correct total amount is displayed
 
 	Examples:
@@ -46,14 +46,14 @@ Scenario Outline: As user I'm able to add product to cart and decrease their qua
 		And I click on <number> random products
 	Then Cart is opened
 		And Selected product is present in cart
-		And I increase quantity of products to <quantity>
-		And Correct quantity of products is displayed
-		And I decrease quantity of products to <quantity>
-			But If quantity equals "1" minus button is disabled
-		And Correct quantity of products is displayed
+		And I increase quantity of products to <greaterQuantity>
+		And Correct quantity of products <greaterQuantity> is displayed
+		And I decrease quantity of products to <lessQuantity>
+		And Correct quantity of products <lessQuantity> is displayed
+		And If quantity equals "1" minus button is disabled
 
 	Examples:
-	| number | quantity | quantity |
-	| 1      | 4        | 1        |
-	| 1      | 3        | 1        |
-	| 1      | 2        | 1        |
+	| number | greaterQuantity | lessQuantity |
+	| 1      | 4               | 1            |
+	| 1      | 3               | 2            |
+	| 1      | 2               | 1            |
