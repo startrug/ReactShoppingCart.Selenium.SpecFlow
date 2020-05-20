@@ -25,7 +25,7 @@
 	Scenario Outline: As user I'm able to add product to cart and increase their quantity
 		Given I enter to home page
 		When Home page is loaded
-			And I click on <number> random products
+			And I click on 1 random products
 		Then Cart is opened
 			And Selected product is present in cart
 			And I increase quantity of products to <quantity>
@@ -33,17 +33,17 @@
 			And Correct total amount is displayed
 
 	Examples:
-	| number | quantity |
-	| 1      | 2        |
-	| 1      | 3        |
-	| 1      | 4        |
-	| 1      | 5        |
+	| quantity |
+	| 2        |
+	| 3        |
+	| 4        |
+	| 5        |
 
 	@addtocart
 	Scenario Outline: As user I'm able to add product to cart and decrease their quantity
 		Given I enter to home page
 		When Home page is loaded
-			And I click on <number> random products
+			And I click on 1 random products
 		Then Cart is opened
 			And Selected product is present in cart
 			And I increase quantity of products to <greaterQuantity>
@@ -53,7 +53,7 @@
 			And If quantity equals "1" minus button is disabled
 
 	Examples:
-	| number | greaterQuantity | lessQuantity |
-	| 1      | 4               | 1            |
-	| 1      | 3               | 2            |
-	| 1      | 2               | 1            |
+	| greaterQuantity | lessQuantity |
+	| 4               | 1            |
+	| 3               | 2            |
+	| 2               | 1            |

@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="Settings\TestsHook.cs" />
+    <Compile Include="Steps\RemoveProductsFromCartSteps.cs" />
     <Compile Include="Steps\StepsBase.cs" />
     <Compile Include="Values\ChangeType.cs" />
     <Compile Include="Values\Description.cs" />
@@ -171,6 +172,7 @@
     <None Include="app.config" />
     <None Include="Feature\AddProductsToCart.feature" />
     <None Include="Feature\OpenHomePage.feature" />
+    <None Include="Feature\RemoveProductsFromCart.feature" />
     <None Include="packages.config" />
     <None Include="specflow.json" />
   </ItemGroup>

@@ -4,7 +4,7 @@ using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
-    class StepsBase
+    public abstract class StepsBase
     {
         protected StepsBase(IObjectContainer objectContainer)
         {
