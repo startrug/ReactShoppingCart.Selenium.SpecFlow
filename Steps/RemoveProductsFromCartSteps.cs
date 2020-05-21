@@ -1,4 +1,7 @@
-﻿using BoDi;
+﻿using System.Linq;
+using BoDi;
+using NUnit.Framework;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
@@ -11,26 +14,28 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Given(@"I select product to remove")]
         public void GivenISelectProductToRemove()
         {
-            //ScenarioContext.Current.Pending();
+            productName = Cart.GetProductNames().Select(p => p.Text).First();
         }
 
         [When(@"I click on delete button")]
         public void WhenIClickOnDeleteButton()
         {
-            //ScenarioContext.Current.Pending();
+            Cart.Delete(Product.List.First());
         }
 
         [Then(@"Product is removed from cart")]
         public void ThenProductIsRemovedFromCart()
         {
-            //ScenarioContext.Current.Pending();
+            Assert.That(Cart.GetProductNames().Select(e => e.Text).Contains(productName), Is.False);
         }
 
         [Then(@"Expected message is present in cart")]
         public void ThenExpectedMessageIsPresentInCart()
         {
-            //ScenarioContext.Current.Pending();
+            Assert.IsTrue(Cart.NoProductsMessage.Displayed);
         }
+
+        private string productName;
 
     }
 }

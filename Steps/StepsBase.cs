@@ -1,10 +1,13 @@
-﻿using BoDi;
+﻿using System.Collections.Generic;
+using BoDi;
 using OpenQA.Selenium;
 using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
+using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 {
-    public abstract class StepsBase
+    [Binding]
+    abstract class StepsBase
     {
         protected StepsBase(IObjectContainer objectContainer)
         {
@@ -16,5 +19,13 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         protected HomePage HomePage => container.Resolve<HomePage>();
 
         protected readonly IObjectContainer container;
+
+        protected List<Product> RandomProducts { get; set; }
+
+        protected Cart Cart
+        {
+            get => container.Resolve<Cart>();
+            set { }
+        }
     }
 }

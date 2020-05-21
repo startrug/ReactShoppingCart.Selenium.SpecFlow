@@ -139,6 +139,9 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
 #line 18
    testRunner.And("Expected message is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 19
+   testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

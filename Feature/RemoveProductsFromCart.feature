@@ -16,3 +16,4 @@
 		When I click on delete button
 		Then Product is removed from cart
 			And Expected message is present in cart
+			And Correct total amount is displayed
