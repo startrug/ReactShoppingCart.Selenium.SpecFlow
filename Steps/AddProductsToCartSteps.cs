@@ -28,16 +28,13 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Then(@"Selected product is present in cart")]
         public void ThenSelectedProductIsPresentInCart()
         {
-            foreach (var product in Product.List)
-            {
-                Assert.That(Cart.GetProductNames().Select(e => e.Text).Contains(product.Name), Is.True);
-            }
+            Cart.CheckProducts();
         }
 
         [Then(@"Correct total amount is displayed")]
         public void ThenCorrectTotalAmountIsDisplayed()
         {
-            Assert.AreEqual(Order.TotalAmount.ToString("F"), Cart.GetSubtotal());
+            Assert.AreEqual(Order.GetTotal(), Cart.GetSubtotal());
         }
 
         [Then(@"I increase quantity of products to (.*)")]

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using ReactShoppingCart.Selenium.SpecFlow.Settings;
 using ReactShoppingCart.Selenium.SpecFlow.Values;
@@ -17,6 +19,14 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
         public bool IsOpened() => Driver.FindElement(By.CssSelector(".float-cart--open")).Displayed;
 
         public string GetSubtotal() => Driver.FindElement(By.CssSelector(".float-cart .sub-price p")).Text.Replace(" ", "").Remove(0, 1);
+
+        public void CheckProducts()
+        {
+            foreach (var product in Product.List)
+            {
+                Assert.That(GetProductNames().Select(e => e.Text).Contains(product.Name), Is.True);
+            }
+        }
 
         internal void Delete(Product productToRemove)
         {

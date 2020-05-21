@@ -16,9 +16,14 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
             TotalAmount = Double.Parse(price.Remove(0, 1)) * quantity;
         }
 
-        internal static void SubtractAmount(string price)
+        public static void SubtractAmount(string price)
         {
             TotalAmount -= Double.Parse(price.Remove(0, 1));
+        }
+
+        public static string GetTotal()
+        {
+            return TotalAmount.ToString("F");
         }
     }
 }
