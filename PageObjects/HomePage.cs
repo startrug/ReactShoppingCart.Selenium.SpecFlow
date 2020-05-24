@@ -40,7 +40,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
                 products.ElementAt(i).ClickOnPhoto();
             }
 
-            Product.List = products;
+            Order.ProductsList = products;
 
             return new Cart(Driver);
         }

@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using BoDi;
 using NUnit.Framework;
 using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
+using ReactShoppingCart.Selenium.SpecFlow.Settings;
 using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
@@ -11,22 +13,23 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
     {
         public RemoveProductsFromCartSteps(IObjectContainer objectContainer) : base(objectContainer) { }
 
-        [Given(@"I select product to remove")]
-        public void GivenISelectProductToRemove()
+        [Given(@"I select number of products to remove: (.*)")]
+        public void GivenISelectNumberOfProductsToRemove(int numberOfProducts)
         {
-            productName = Cart.GetProductNames().Select(p => p.Text).First();
+            productsToRemove = Order.ProductsList.Select(p => p).Take(numberOfProducts);
         }
 
         [When(@"I click on delete button")]
         public void WhenIClickOnDeleteButton()
         {
-            Cart.Delete(Product.List.First());
+            productsToRemove.ToList().ForEach(ptr => Cart.Delete(ptr));
         }
 
         [Then(@"Product is removed from cart")]
         public void ThenProductIsRemovedFromCart()
         {
-            Assert.That(Cart.GetProductNames().Select(e => e.Text).Contains(productName), Is.False);
+            productsToRemove.ToList().ForEach(ptr
+                => Assert.IsFalse(Cart.GetProductNames().Select(e => e.Text).Contains(ptr.Name)));
         }
 
         [Then(@"Expected message is present in cart")]
@@ -35,7 +38,6 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             Assert.IsTrue(Cart.NoProductsMessage.Displayed);
         }
 
-        private string productName;
-
+        private IEnumerable<Product> productsToRemove;
     }
 }

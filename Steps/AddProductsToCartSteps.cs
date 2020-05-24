@@ -25,7 +25,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             Assert.IsTrue(Cart.IsOpened());
         }
 
-        [Then(@"Selected product is present in cart")]
+        [Then(@"Selected products are present in cart")]
         public void ThenSelectedProductIsPresentInCart()
         {
             Cart.CheckProducts();
@@ -41,7 +41,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         public void ThenIIncreaseAquantityOfProductTo(int newQuantity)
         {
             greaterQuantity = newQuantity;
-            var product = Product.List.First();
+            var product = Order.ProductsList.First();
 
             for (int i = 1; i < greaterQuantity; i++)
             {
@@ -54,14 +54,14 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Then(@"Correct quantity of products (.*) is displayed")]
         public void ThenCorrectQuantityOfProductsIsDisplayed(int quantity)
         {
-            Assert.AreEqual(quantity, Cart.GetDescription(Product.List.First().Name).Quantity);
+            Assert.AreEqual(quantity, Cart.GetDescription(Order.ProductsList.First().Name).Quantity);
         }
 
         [Then(@"I decrease quantity of products to (.*)")]
         public void ThenIDecreaseQuantityOfProductsTo(int newQuantity)
         {
             lessQuantity = newQuantity;
-            var product = Product.List.First();
+            var product = Order.ProductsList.First();
 
             for (int i = greaterQuantity; i > lessQuantity; i--)
             {
@@ -74,13 +74,13 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
         [Then(@"If quantity equals ""(.*)"" minus button is disabled")]
         public void ThenIfQuantityEqualsMinusButtonIsDisabled(int minimumQuantity)
         {
-            if (Cart.GetDescription(Product.List.First().Name).Quantity > minimumQuantity)
+            if (Cart.GetDescription(Order.ProductsList.First().Name).Quantity > minimumQuantity)
             {
-                Assert.True(Cart.MinusButton(Product.List.First().Name).Enabled);
+                Assert.True(Cart.MinusButton(Order.ProductsList.First().Name).Enabled);
             }
             else
             {
-                Assert.IsFalse(Cart.MinusButton(Product.List.First().Name).Enabled);
+                Assert.IsFalse(Cart.MinusButton(Order.ProductsList.First().Name).Enabled);
             }
         }
 

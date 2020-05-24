@@ -20,8 +20,6 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
 
         protected readonly IObjectContainer container;
 
-        protected List<Product> RandomProducts { get; set; }
-
         protected Cart Cart
         {
             get => container.Resolve<Cart>();

@@ -22,7 +22,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 
         public void CheckProducts()
         {
-            foreach (var product in Product.List)
+            foreach (var product in Order.ProductsList)
             {
                 Assert.That(GetProductNames().Select(e => e.Text).Contains(product.Name), Is.True);
             }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
@@ -21,7 +20,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 
         public IWebElement Photo => Driver.FindElement(By.CssSelector($"[data-sku='{Id}'] img"));
 
-        public static List<Product> List { get; set; }
+        //public static List<Product> List { get; set; }
 
         public void ClickOnPhoto() => Photo.Click();
 

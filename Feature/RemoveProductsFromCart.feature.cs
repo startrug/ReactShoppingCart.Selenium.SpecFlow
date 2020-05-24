@@ -86,24 +86,22 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
   testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
-   testRunner.And("I click on 1 random products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("I click on 2 random products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
   testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 12
-   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected products are present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("As user I\'m able to remove the only product from cart and I can see expected mess" +
-            "age")]
-        public virtual void AsUserImAbleToRemoveTheOnlyProductFromCartAndICanSeeExpectedMessage()
+        [NUnit.Framework.DescriptionAttribute("As user I\'m able to remove all products from cart and I can see expected message")]
+        public virtual void AsUserImAbleToRemoveAllProductsFromCartAndICanSeeExpectedMessage()
         {
             string[] tagsOfScenario = ((string[])(null));
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to remove the only product from cart and I can see expected mess" +
-                    "age", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to remove all products from cart and I can see expected message", null, ((string[])(null)));
 #line 14
  this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -128,7 +126,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
  this.FeatureBackground();
 #line hidden
 #line 15
-  testRunner.Given("I select product to remove", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+  testRunner.Given("I select number of products to remove: 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 16
   testRunner.When("I click on delete button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -140,6 +138,51 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
    testRunner.And("Expected message is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
+   testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("As user I\'m able to remove only one of products from cart")]
+        public virtual void AsUserImAbleToRemoveOnlyOneOfProductsFromCart()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("As user I\'m able to remove only one of products from cart", null, ((string[])(null)));
+#line 21
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 7
+ this.FeatureBackground();
+#line hidden
+#line 22
+  testRunner.Given("I select number of products to remove: 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 23
+  testRunner.When("I click on delete button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
+  testRunner.Then("Product is removed from cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 25
    testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
