@@ -11,7 +11,7 @@
 		When Home page is loaded
 			And I click on <number> random products
 		Then Cart is opened
-			And Selected product is present in cart
+			And Selected products are present in cart
 			And Correct total amount is displayed
 
 	Examples:
@@ -27,8 +27,8 @@
 		When Home page is loaded
 			And I click on 1 random products
 		Then Cart is opened
-			And Selected product is present in cart
-			And I increase quantity of products to <quantity>
+			And Selected products are present in cart
+			And I set quantity of products to <quantity>
 			And Correct quantity of products <quantity> is displayed
 			And Correct total amount is displayed
 
@@ -45,10 +45,10 @@
 		When Home page is loaded
 			And I click on 1 random products
 		Then Cart is opened
-			And Selected product is present in cart
-			And I increase quantity of products to <greaterQuantity>
+			And Selected products are present in cart
+			And I set quantity of products to <greaterQuantity>
 			And Correct quantity of products <greaterQuantity> is displayed
-			And I decrease quantity of products to <lessQuantity>
+			And I set quantity of products to <lessQuantity>
 			And Correct quantity of products <lessQuantity> is displayed
 			And If quantity equals "1" minus button is disabled
 

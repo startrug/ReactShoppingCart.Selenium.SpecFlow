@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using ReactShoppingCart.Selenium.SpecFlow.Settings;
@@ -33,16 +31,26 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
             wait
                 .Until(EC.ElementToBeClickable(DeleteButtonLocator(productToRemove.Name)))
                 .Click();
+
             Order.SubtractAmount(productToRemove.Price);
         }
 
         public ReadOnlyCollection<IWebElement> GetProductNames() => Driver.FindElements(By.CssSelector(".float-cart .shelf-item .title"));
 
-        public void SetQuantity(ChangeType type, string productName)
+        public void SetQuantity(int targetQuantity, Product product)
         {
-            wait
-                .Until(EC.ElementToBeClickable(ChangeQuantity(type, productName)))
-                .Click();
+
+            while (GetDescription(product.Name).Quantity > targetQuantity)
+            {
+                Driver.FindElement(MinusButtonLocator(product.Name)).Click();
+            }
+
+            while (GetDescription(product.Name).Quantity < targetQuantity)
+            {
+                Driver.FindElement(PlusButtonLocator(product.Name)).Click();
+            }
+
+            Order.SetAmountUsingQuantity(product.Price, targetQuantity);
         }
 
         public Description GetDescription(string productName)
@@ -53,24 +61,6 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
         }
 
         public IWebElement MinusButton(string productName) => Driver.FindElement(MinusButtonLocator(productName));
-
-        public void WaitForUpdate()
-        {
-            Thread.Sleep(1500);
-        }
-
-        private By ChangeQuantity(ChangeType type, string productName)
-        {
-            switch (type)
-            {
-                case ChangeType.Increase:
-                    return PlusButtonLocator(productName);
-                case ChangeType.Decrease:
-                    return MinusButtonLocator(productName);
-                default:
-                    throw new Exception("Incorrect change quantity type");
-            }
-        }
 
         private By MinusButtonLocator(string productName) => By.XPath($"{openedCartXpath}//p[text()='{productName}']/parent::div/following::div/button[text()='-']");
         private By PlusButtonLocator(string productName) => By.XPath($"{openedCartXpath}//p[text()='{productName}']/parent::div/following::div/button[text()='+']");

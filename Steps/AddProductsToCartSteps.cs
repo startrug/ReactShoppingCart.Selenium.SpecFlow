@@ -3,7 +3,6 @@ using BoDi;
 using NUnit.Framework;
 using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 using ReactShoppingCart.Selenium.SpecFlow.Settings;
-using ReactShoppingCart.Selenium.SpecFlow.Values;
 using TechTalk.SpecFlow;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Steps
@@ -37,38 +36,18 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
             Assert.AreEqual(Order.GetTotal(), Cart.GetSubtotal());
         }
 
-        [Then(@"I increase quantity of products to (.*)")]
+        [Then(@"I set quantity of products to (.*)")]
         public void ThenIIncreaseAquantityOfProductTo(int newQuantity)
         {
-            greaterQuantity = newQuantity;
             var product = Order.ProductsList.First();
 
-            for (int i = 1; i < greaterQuantity; i++)
-            {
-                Cart.SetQuantity(ChangeType.Increase, product.Name);
-                NewOrder.SetAmountUsingQuantity(product.Price, greaterQuantity);
-            }
-            Cart.WaitForUpdate();
+            Cart.SetQuantity(newQuantity, product);
         }
 
         [Then(@"Correct quantity of products (.*) is displayed")]
         public void ThenCorrectQuantityOfProductsIsDisplayed(int quantity)
         {
             Assert.AreEqual(quantity, Cart.GetDescription(Order.ProductsList.First().Name).Quantity);
-        }
-
-        [Then(@"I decrease quantity of products to (.*)")]
-        public void ThenIDecreaseQuantityOfProductsTo(int newQuantity)
-        {
-            lessQuantity = newQuantity;
-            var product = Order.ProductsList.First();
-
-            for (int i = greaterQuantity; i > lessQuantity; i--)
-            {
-                Cart.SetQuantity(ChangeType.Decrease, product.Name);
-                NewOrder.SetAmountUsingQuantity(product.Price, lessQuantity);
-            }
-            Cart.WaitForUpdate();
         }
 
         [Then(@"If quantity equals ""(.*)"" minus button is disabled")]
@@ -83,10 +62,5 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Steps
                 Assert.IsFalse(Cart.MinusButton(Order.ProductsList.First().Name).Enabled);
             }
         }
-
-        private Order NewOrder => container.Resolve<Order>();
-
-        private int greaterQuantity;
-        private int lessQuantity;
     }
 }
