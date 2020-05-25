@@ -1,19 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using ReactShoppingCart.Selenium.SpecFlow.PageObjects;
 
 namespace ReactShoppingCart.Selenium.SpecFlow.Settings
 {
     public class Order
     {
-        public double TotalAmount { get; set; }
+        public static double TotalAmount { get; set; }
 
-        public void AddAmount(string price)
+        public static List<Product> ProductsList { get; set; }
+
+        public static void AddAmount(string price)
         {
-            TotalAmount += Double.Parse(price.Remove(0, 1));
+            TotalAmount += ConvertToNumber(price);
         }
 
         public void SetAmountUsingQuantity(string price, int quantity)
         {
-            TotalAmount = Double.Parse(price.Remove(0, 1)) * quantity;
+            TotalAmount = ConvertToNumber(price) * quantity;
         }
+
+        public static void SubtractAmount(string price)
+        {
+            TotalAmount -= ConvertToNumber(price);
+        }
+
+        public static string GetTotal() => TotalAmount.ToString("F");
+
+        private static double ConvertToNumber(string price) => Double.Parse(price.Remove(0, 1));
     }
 }

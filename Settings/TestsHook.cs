@@ -33,11 +33,14 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
         {
             order = new Order();
             objectContainer.RegisterInstanceAs(order);
+            cart = new Cart(driver);
+            objectContainer.RegisterInstanceAs(cart);
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
+            Order.TotalAmount = 0;
             driver.Close();
             driver.Dispose();
             objectContainer.Dispose();
@@ -47,6 +50,8 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
 
         private HomePage homePage;
         private Order order;
+        private Cart cart;
+
         private readonly IObjectContainer objectContainer;
     }
 }

@@ -137,11 +137,11 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("As user I\'m able to add product to cart and increase their quantity")]
         [NUnit.Framework.CategoryAttribute("addtocart")]
-        [NUnit.Framework.TestCaseAttribute("1", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "3", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "4", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "5", null)]
-        public virtual void AsUserImAbleToAddProductToCartAndIncreaseTheirQuantity(string number, string quantity, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("2", null)]
+        [NUnit.Framework.TestCaseAttribute("3", null)]
+        [NUnit.Framework.TestCaseAttribute("4", null)]
+        [NUnit.Framework.TestCaseAttribute("5", null)]
+        public virtual void AsUserImAbleToAddProductToCartAndIncreaseTheirQuantity(string quantity, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "addtocart"};
@@ -178,7 +178,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
   testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 28
-   testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("I click on 1 random products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
   testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -202,10 +202,10 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("As user I\'m able to add product to cart and decrease their quantity")]
         [NUnit.Framework.CategoryAttribute("addtocart")]
-        [NUnit.Framework.TestCaseAttribute("1", "4", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "3", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("1", "2", "1", null)]
-        public virtual void AsUserImAbleToAddProductToCartAndDecreaseTheirQuantity(string number, string greaterQuantity, string lessQuantity, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("4", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("3", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("2", "1", null)]
+        public virtual void AsUserImAbleToAddProductToCartAndDecreaseTheirQuantity(string greaterQuantity, string lessQuantity, string[] exampleTags)
         {
             string[] @__tags = new string[] {
                     "addtocart"};
@@ -242,7 +242,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
   testRunner.When("Home page is loaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 46
-   testRunner.And(string.Format("I click on {0} random products", number), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("I click on 1 random products", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
   testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

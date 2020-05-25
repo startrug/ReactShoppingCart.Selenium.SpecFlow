@@ -2,7 +2,7 @@
 
 namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 {
-    internal class Product : PageObjectsBase
+    public class Product : PageObjectsBase
     {
         public Product(IWebDriver driver, string id) : base(driver)
         {
@@ -20,12 +20,9 @@ namespace ReactShoppingCart.Selenium.SpecFlow.PageObjects
 
         public IWebElement Photo => Driver.FindElement(By.CssSelector($"[data-sku='{Id}'] img"));
 
-        public Cart ClickOnPhoto()
-        {
-            Photo.Click();
+        //public static List<Product> List { get; set; }
 
-            return new Cart(Driver);
-        }
+        public void ClickOnPhoto() => Photo.Click();
 
         private readonly string Id;
     }
