@@ -125,7 +125,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
   testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 14
-   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected products are present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
    testRunner.And("Correct total amount is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -184,10 +184,10 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
   testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 30
-   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected products are present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 31
-   testRunner.And(string.Format("I increase quantity of products to {0}", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I set quantity of products to {0}", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 32
    testRunner.And(string.Format("Correct quantity of products {0} is displayed", quantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -248,16 +248,16 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Feature
   testRunner.Then("Cart is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 48
-   testRunner.And("Selected product is present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("Selected products are present in cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 49
-   testRunner.And(string.Format("I increase quantity of products to {0}", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I set quantity of products to {0}", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 50
    testRunner.And(string.Format("Correct quantity of products {0} is displayed", greaterQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 51
-   testRunner.And(string.Format("I decrease quantity of products to {0}", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And(string.Format("I set quantity of products to {0}", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 52
    testRunner.And(string.Format("Correct quantity of products {0} is displayed", lessQuantity), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");

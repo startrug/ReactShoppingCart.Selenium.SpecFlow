@@ -15,7 +15,7 @@ namespace ReactShoppingCart.Selenium.SpecFlow.Settings
             TotalAmount += ConvertToNumber(price);
         }
 
-        public void SetAmountUsingQuantity(string price, int quantity)
+        public static void SetAmountUsingQuantity(string price, int quantity)
         {
             TotalAmount = ConvertToNumber(price) * quantity;
         }
